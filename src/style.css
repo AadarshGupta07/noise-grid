@@ -3,8 +3,8 @@
 @font-face
 {
     font-family: 'Ailerons';
-    src: url('./fonts/subset-Ailerons-Regular.woff2') format('woff2'),
-        url('./fonts/subset-Ailerons-Regular.woff') format('woff');
+    src: url('../fonts/subset-Ailerons-Regular.woff2') format('woff2'),
+        url('../fonts/subset-Ailerons-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
