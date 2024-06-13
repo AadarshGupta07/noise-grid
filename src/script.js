@@ -5,7 +5,7 @@ import { Pane } from 'tweakpane';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 import { createNoise3D } from 'simplex-noise';
-import {gsap} from "gsap";
+import { gsap } from "gsap";
 
 import vertexShader from './shaders/vertex.glsl';
 import fragmentShader from './shaders/fragment.glsl';
@@ -40,19 +40,7 @@ const sizes = {
     pixelRatio: Math.min(window.devicePixelRatio, 2)
 }
 
-window.addEventListener('resize', () => {
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
-
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
 
 /***
  *  Lights
@@ -639,6 +627,25 @@ postProcessingFolder.addInput(params, 'enableBasicShader', { label: 'Enable Outl
 });
 
 
+
+window.addEventListener('resize', () => {
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
+    if (params.enablePostProcessing) {
+        postProcessing.resize()
+    }
+})
 
 /**
  * Animate
