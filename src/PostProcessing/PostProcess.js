@@ -16,7 +16,7 @@ export default class PostProcessing {
         this.scene = scene;
         this.camera = camera;
         this.sizes = sizes;
-        this.params = params; // Store params for later use
+        this.params = params;
 
         this.composer = null;
         this.customPass = null; // Store reference to customPass

@@ -5,6 +5,10 @@ import { Pane } from 'tweakpane';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 import { createNoise3D } from 'simplex-noise';
+import {gsap} from "gsap";
+
+import vertexShader from './shaders/vertex.glsl';
+import fragmentShader from './shaders/fragment.glsl';
 
 /**
  * Base
@@ -70,13 +74,10 @@ scene.add(camera)
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.maxDistance = 300
 
 
 
-
-
-import vertexShader from './shaders/vertex.glsl';
-import fragmentShader from './shaders/fragment.glsl';
 const noise3D = createNoise3D();
 
 // Define color maps as arrays of colors
@@ -356,7 +357,7 @@ const rectHeight = 0.6;
 const spacing = 3.5;
 const numInstances = (gridSize * 2 + 1) * (gridSize * 2 + 1);
 
-// Function to create instanced geometry for rectangular cuboids
+
 function createInstancedMesh() {
 
     // Adjust geometry dimensions based on applyRotation
@@ -397,11 +398,12 @@ function createInstancedMesh() {
     return instancedMesh;
 }
 
-// Initialize the scene with the instanced mesh
 let instancedMesh = createInstancedMesh();
 scene.add(instancedMesh);
 
-// Apply Simplex noise to rotate and scale the cuboids, and update colors
+
+// Animate Noise
+
 function applyNoise(time) {
     const dummy = new THREE.Object3D();
     const instanceColors = instancedMesh.geometry.attributes.instanceColor.array;
@@ -445,15 +447,10 @@ function applyNoise(time) {
 }
 
 
+// Base
 
-
-
-
-// Create a plane geometry
 const geometry = new THREE.PlaneGeometry(2000, 2000);
 geometry.rotateX(Math.PI * 0.5)
-
-import {gsap} from "gsap";
 
 const material = new THREE.ShaderMaterial({
     vertexShader: `
