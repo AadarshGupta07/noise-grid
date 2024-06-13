@@ -22,7 +22,7 @@
     position: absolute;
     top: calc(50% - 14vmin / 2);
     overflow: hidden;
-    outline: 2px solid lime;
+    /* outline: 2px solid lime; */
     z-index: 100;
 
 }
