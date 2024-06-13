@@ -582,8 +582,8 @@ noiseFolder.addInput(params, 'noiseSpeed', { min: 0.01, max: 1.0, step: 0.01, la
 });
 
 // Add a folder for scale configuration
-const scaleFolder = pane.addFolder({ title: 'Scale Settings', expanded: false });
-scaleFolder.addInput(params, 'yScaleAmplitude', { min: 1, max: 200, step: 1, label: 'Y-Scale Amplitude' }).on('change', () => {
+const scaleFolder = pane.addFolder({ title: 'Amplitude Settings', expanded: false });
+scaleFolder.addInput(params, 'yScaleAmplitude', { min: 1, max: 200, step: 1, label: 'Amplitude' }).on('change', () => {
     applyNoise(lastElapsedTime); // Update noise application immediately when changing y-scale amplitude
 });
 
