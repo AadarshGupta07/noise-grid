@@ -647,6 +647,22 @@ window.addEventListener('resize', () => {
     }
 })
 
+
+// Title Intro Animation
+
+const tl = gsap.timeline();
+tl.from(".title", {
+  y: 110,
+  ease: "power4.out",
+  duration: 1.8,
+  delay: 1,
+  skewY: 7,
+  stagger: {
+    amount: 0.3
+  }
+})
+
+
 /**
  * Animate
  */
